@@ -48,28 +48,115 @@
     </div>
 
     <div class="grid grid-cols-1 border lg:grid-cols-2 gap-4 px-5 bg-white py-6 rounded-2xl mt-8 mx-2">
-        <!-- Dropdown Status -->
-        <div>
-            <select name="status"
-                class="w-full h-full px-3 py-2 rounded-lg border-gray-300 text-sm cursor-pointer
-                    focus:ring-[#10AF13] focus:border-[#10AF13]">
-                <option value="">Semua Batch</option>
-                <option value="pyGame">Python Game Developer Batch 1</option>
-                <option value="pyCode">Python Coder Batch 3</option>
-                <option value="webDev">Web Development Fundamentals</option>
-            </select>
+        
+        <!-- Dropdown Batch -->
+        <div x-data="{ open: false, value: '', label: 'Semua Batch' }" class="relative w-full">
+            <button @click="open = !open"
+                :class="open
+                    ?
+                    'border-[#10AF13] ring-1 ring-[#10AF13]' :
+                    'border-gray-300'"
+                class="w-full px-3 py-2 rounded-lg border cursor-pointer
+                flex justify-between items-center text-sm bg-white transition">
+                <span x-text="label"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 9l6 6l6 -6" />
+                </svg>
+            </button>
+
+            <!-- Dropdown Content -->
+            <div x-show="open" @click.outside="open = false" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-95"
+                class="absolute z-20 mt-2 w-full bg-white border rounded-lg shadow-md overflow-hidden">
+
+                <!-- Item -->
+                <template
+                    x-for="item in [
+                        { value: '', label: 'Semua Batch' },
+                        { value: 'pyGame', label: 'Python Game Developer Batch 1' },
+                        { value: 'pyCoder', label: 'Python Coder Batch 3' },
+                        { value: 'webDev', label: 'Web Development Fundamentals' }
+                    ]"
+                    :key="item.value">
+
+                    <div @click="value = item.value; label = item.label; open = false"
+                        class="px-3 py-2 text-sm cursor-pointer flex justify-between items-center hover:bg-gray-100">
+
+                        <span x-text="item.label"></span>
+
+                        <!-- Check Icon -->
+                        <svg x-show="value === item.value" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                            stroke="#10AF13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M5 12l5 5l10 -10" />
+                        </svg>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Hidden input untuk backend -->
+            <input type="hidden" name="batch" :value="value">
         </div>
 
         <!-- Dropdown Cabang -->
-        <div>
-            <select name="branch"
-                class="w-full h-full px-3 py-2 rounded-lg border-gray-300 text-sm cursor-pointer
-                    focus:ring-[#10AF13] focus:border-[#10AF13]">
-                <option value="">Semua Cabang</option>
-                <option value="jakarta">Jakarta Pusat</option>
-                <option value="bandung">Bandung</option>
-                <option value="surabaya">Surabaya</option>
-            </select>
+        <div x-data="{ open: false, value: '', label: 'Semua Cabang' }" class="relative w-full">
+            <button @click="open = !open"
+                :class="open
+                    ?
+                    'border-[#10AF13] ring-1 ring-[#10AF13]' :
+                    'border-gray-300'"
+                class="w-full px-3 py-2 rounded-lg border cursor-pointer
+                flex justify-between items-center text-sm bg-white transition">
+                <span x-text="label"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 9l6 6l6 -6" />
+                </svg>
+            </button>
+
+            <!-- Dropdown Content -->
+            <div x-show="open" @click.outside="open = false" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-95"
+                class="absolute z-20 mt-2 w-full bg-white border rounded-lg shadow-md overflow-hidden">
+
+                <!-- Item -->
+                <template
+                    x-for="item in [
+                        { value: '', label: 'Semua Cabang' },
+                        { value: 'jakarta-pusat', label: 'Jakarta Pusat' },
+                        { value: 'bandung', label: 'Bandung' },
+                        { value: 'surabaya', label: 'Surabaya' }
+                    ]"
+                    :key="item.value">
+
+                    <div @click="value = item.value; label = item.label; open = false"
+                        class="px-3 py-2 text-sm cursor-pointer flex justify-between items-center hover:bg-gray-100">
+
+                        <span x-text="item.label"></span>
+
+                        <!-- Check Icon -->
+                        <svg x-show="value === item.value" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                            stroke="#10AF13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M5 12l5 5l10 -10" />
+                        </svg>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Hidden input untuk backend -->
+            <input type="hidden" name="cabang" :value="value">
         </div>
     </div>
 
