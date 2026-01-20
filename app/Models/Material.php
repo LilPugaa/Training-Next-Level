@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Material extends Model
 {
-    /** @use HasFactory<\Database\Factories\TaskFactory> */
+    /** @use HasFactory<\Database\Factories\MaterialFactory> */
     use HasFactory;
 
     protected $fillable = [
         'batch_id',
         'trainer_id',
-        'title',
-        'description',
-        'deadline',
-        'link_lampiran',
+        'judul_materi',
+        'tipe_materi',
+        'link_materi',
     ];
 
     public function batch() {

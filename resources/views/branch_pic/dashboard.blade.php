@@ -3,10 +3,10 @@
 @section('content')
     <div class="px-2">
         <h1 class="text-2xl font-semibold">Dashboard Branch</h1>
-        <p class="text-[#737373] mt-2 font-medium">Cabang Jakarta Pusat</p>
+        <p class="text-[#737373] mt-2 font-medium">Cabang Denpasar</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 px-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-8 px-2">
         @include('dashboard.card', [
             'title'=>'Total Peserta',
             'value'=>4,
@@ -18,8 +18,17 @@
             'color'=>'text-[#AE00FF]'
         ])
         @include('dashboard.card', [
+            'title'=>'Approved',
+            'value'=>0,
+            'icon'=>'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-check">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                <path d="M6 21v-2a4 4 0 0 1 4 -4h4" /><path d="M15 19l2 2l4 -4" /></svg>',
+            'color'=>'text-[#0059FF]'
+        ])
+        @include('dashboard.card', [
             'title'=>'Ongoing',
-            'value'=>1,
+            'value'=>0,
             'icon'=>'<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2" width="24" height="24" 
                 viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 3 a9 9 0 1 0 9 9" /></svg>',
             'color'=>'text-[#10AF13]'
@@ -76,45 +85,6 @@
                 </div>
                 <span class="px-3 py-1 text-sm uppercase font-medium rounded-full bg-blue-100 text-[#0059FF]">
                     Approved
-                </span>
-            </div>
-            <div class="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition">
-                <div>
-                    <h3 class="text-md font-semibold text-gray-800">
-                        Budi Hartono
-                    </h3>
-                    <p class="text-md font-medium text-[#737373] flex flex-wrap gap-2">
-                        Python Coder Batch 3
-                    </p>
-                </div>
-                <span class="px-3 py-1 text-sm uppercase font-medium rounded-full bg-gray-200 text-gray-700">
-                    Registered
-                </span>
-            </div>
-            <div class="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition">
-                <div>
-                    <h3 class="text-md font-semibold text-gray-800">
-                        Dewi Lestari
-                    </h3>
-                    <p class="text-md font-medium text-[#737373] flex flex-wrap gap-2">
-                        Web Development Fundamentals
-                    </p>
-                </div>
-                <span class="px-3 py-1 text-sm uppercase font-medium rounded-full bg-orange-100 text-[#FF4D00]">
-                    Completed
-                </span>
-            </div>
-            <div class="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition">
-                <div>
-                    <h3 class="text-md font-semibold text-gray-800">
-                        Dewi Lestari
-                    </h3>
-                    <p class="text-md font-medium text-[#737373] flex flex-wrap gap-2">
-                        Web Development Fundamentals
-                    </p>
-                </div>
-                <span class="px-3 py-1 text-sm uppercase font-medium rounded-full bg-orange-100 text-[#FF4D00]">
-                    Completed
                 </span>
             </div>
             <div class="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition">

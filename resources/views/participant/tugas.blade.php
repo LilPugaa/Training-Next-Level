@@ -157,7 +157,7 @@
         </div>
 
         <div class="mt-5 space-y-4">
-            <button @click="openUploadTugas = true" class="flex items-center justify-center bg-[#0059FF] text-white rounded-lg w-full gap-3 py-2 cursor-pointer hover:bg-blue-700 transition font-semibold">
+            <button @click="openSubmitTugas = true" class="flex items-center justify-center bg-[#0059FF] text-white rounded-lg w-full gap-3 py-2 cursor-pointer hover:bg-blue-700 transition font-semibold">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-upload">
@@ -171,10 +171,10 @@
         </div>
     </div>
 
-    <!-- Modal Tambah Kategori -->
-    <div x-show="openUploadTugas" x-cloak x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-        <div @click.outside="openUploadTugas = false" class="bg-white w-full max-w-xl rounded-2xl p-6 relative">
-            <button @click="openUploadTugas = false" class="absolute top-6 right-6 text-[#737373] hover:text-black">
+    <!-- Modal Submit Tugas -->
+    <div x-show="openSubmitTugas" x-cloak x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+        <div class="bg-white w-full max-w-xl rounded-2xl p-6 relative">
+            <button @click="openSubmitTugas = false" class="absolute top-6 right-6 text-[#737373] hover:text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-x">
@@ -211,7 +211,7 @@
 
                 <div class="flex justify-end gap-3 pt-4 me-2">
                     <button type="button"
-                        @click="openUploadTugas = false"
+                        @click="openSubmitTugas = false"
                         class="px-4 py-2 border rounded-lg hover:bg-gray-50 font-medium">
                         Batal
                     </button>

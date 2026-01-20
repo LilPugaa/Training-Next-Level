@@ -114,8 +114,8 @@
                 <h1 class="text-xl font-bold text-black">
                     {{ Auth::user()->name }}
                 </h1>
-                <p class="text-sm text-[#E1EFE2] leading-tight">
-                    Participant
+                <p class="text-sm text-[#E1EFE2] leading-tight font-medium">
+                    {{ Auth::user()->role->description }}
                 </p>
             </div>
         </div>
@@ -126,8 +126,8 @@
         <nav class="mt-4 space-y-3">
 
             <!-- ITEM 1 -->
-            <a href="{{ route('participant.dashboard') }}" class="flex items-center space-x-3 p-3 rounded-lg text-black font-medium
-                {{ request()->routeIs('participant.dashboard') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('participant.dashboard') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('participant.dashboard') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
@@ -141,8 +141,8 @@
             </a>
 
             <!-- ITEM 2 -->
-            <a href="{{ route('pendaftaran') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('pendaftaran') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('pendaftaran') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('pendaftaran') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus">
@@ -156,8 +156,8 @@
             </a>
 
             <!-- ITEM 3 -->
-            <a href="{{ route('pelatihan') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('pelatihan') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('pelatihan') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('pelatihan') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                 </svg>
@@ -165,8 +165,8 @@
             </a>
 
             <!-- ITEM 4 -->
-            <a href="{{ route('absensi') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('absensi') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('absensi') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('absensi') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-check">
@@ -179,8 +179,8 @@
             </a>
 
             <!-- ITEM 5 -->
-            <a href="{{ route('tugas') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('tugas') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('tugas') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('tugas') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
@@ -195,8 +195,8 @@
             </a>
 
             <!-- ITEM 6 -->
-            <a href="{{ route('sertifikat') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('sertifikat') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('sertifikat') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('sertifikat') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-award">
@@ -209,8 +209,8 @@
             </a>
 
             <!-- ITEM 7 -->
-            <a href="{{ route('profile-participant') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('profile-participant') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('profile-participant') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('profile-participant') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-settings">

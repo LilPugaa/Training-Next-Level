@@ -114,7 +114,7 @@
                 <h1 class="text-xl font-bold text-black">
                     {{ Auth::user()->name }}
                 </h1>
-                <p class="text-sm text-[#E1EFE2] leading-tight">
+                <p class="text-sm text-[#E1EFE2] leading-tight font-medium">
                     {{ Auth::user()->role->description }}
                 </p>
             </div>
@@ -126,9 +126,8 @@
         <nav class="mt-4 space-y-3">
 
             <!-- ITEM 1 -->
-            <a href="{{ route('admin.dashboard') }}"
-                class="flex items-center space-x-3 p-3 rounded-lg text-black font-medium
-                {{ request()->routeIs('admin.dashboard') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('admin.dashboard') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
@@ -142,8 +141,8 @@
             </a>
 
             <!-- ITEM 2 -->
-            <a href="{{ route('batch-oversight') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('batch-oversight') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('batch-oversight') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('batch-oversight') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                 </svg>
@@ -151,8 +150,8 @@
             </a>
 
             <!-- ITEM 3 -->
-            <a href="{{ route('admin.role-permission') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('admin.role-permission') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('admin.role-permission') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('admin.role-permission') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-shield">
@@ -163,8 +162,8 @@
             </a>
 
             <!-- ITEM 4 -->
-            <a href="{{ route('global-report') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('global-report') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('global-report') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('global-report') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text">
@@ -178,8 +177,8 @@
             </a>
 
             <!-- ITEM 5 -->
-            <a href="{{ route('audit-log') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('audit-log') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('audit-log') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('audit-log') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-report-search">
@@ -196,8 +195,8 @@
             </a>
 
             <!-- ITEM 6 -->
-            <a href="{{ route('settings') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('settings') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('settings') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('settings') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-settings">

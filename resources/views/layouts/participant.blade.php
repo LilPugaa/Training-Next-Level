@@ -17,6 +17,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <style>
             [x-cloak] { 
                 display: none !important; 
@@ -25,7 +26,7 @@
     </head>
     <body class="font-sans antialiased"
         x-data="{
-            openUploadTugas: false,
+            openSubmitTugas: false,
             openDeleteTugas: false
         }">
         <div class=" flex min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -37,7 +38,7 @@
 
                 @if (session('success'))
                     <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)" 
-                        class="fixed bottom-6 right-6 z-50">
+                        class="fixed top-6 right-6 z-50">
                         <div class="flex items-center gap-3 bg-[#10AF13] text-white px-4 py-3 rounded-lg shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" 
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
@@ -54,18 +55,39 @@
                 @endif
 
                 @if (session('error'))
-                    <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)" 
-                        class="fixed bottom-6 right-6 z-50">
-                        <div class="flex items-center gap-3 bg-[#E81B1B] text-white px-4 py-3 rounded-lg shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" 
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-                                class="icon icon-tabler icons-tabler-x-circle">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <circle cx="12" cy="12" r="9" />
-                                <path d="M10 10l4 4m0 -4l-4 4" />
+                    <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)"
+                        class="fixed top-6 right-6 z-50">
+                        <div class="flex items-center gap-3 bg-[#ff0000] text-white px-4 py-3 rounded-lg shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-exclamation-circle">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M12 9v4" />
+                                <path d="M12 16v.01" />
                             </svg>
                             <span class="font-medium">
                                 {{ session('error') }}
+                            </span>
+                        </div>
+                    </div>
+                @endif
+
+                @if (session('warning'))
+                    <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)" 
+                        class="fixed top-6 right-6 z-50">
+                        <div class="flex items-center gap-3 bg-[#FFE100] text-white px-4 py-3 rounded-lg shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" 
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-alert-circle">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                <path d="M12 8v4" />
+                                <path d="M12 16h.01" />
+                            </svg>
+                            <span class="font-medium">
+                                {{ session('warning') }}
                             </span>
                         </div>
                     </div>

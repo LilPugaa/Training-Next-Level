@@ -367,7 +367,7 @@
                         </button>
 
                         <!-- Header -->
-                        <h2 class="text-2xl font-semibold">Detail Peserta</h2>
+                        <h2 class="text-xl font-semibold">Detail Peserta</h2>
                         <p class="text-[#737373] mb-6">Informasi lengkap peserta pelatihan</p>
 
                         <!-- Content -->
@@ -422,7 +422,7 @@
                         </button>
 
                         <!-- Header -->
-                        <h2 class="text-2xl font-semibold">Detail Peserta</h2>
+                        <h2 class="text-xl font-semibold">Detail Peserta</h2>
                         <p class="text-[#737373] mb-6">Informasi lengkap peserta pelatihan</p>
 
                         <!-- Content -->

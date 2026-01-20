@@ -6,6 +6,12 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BatchController;
+use App\Http\Controllers\BatchParticipantController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\BranchPicController;
 
 Route::get('/', function () {
     if(Auth::check()) {
@@ -87,20 +93,33 @@ Route::middleware(['auth'])->group(function () {
 
 // <!---------------- Coordinator Routes ---------------->
 Route::middleware(['auth'])->group(function () {
-    Route::get('/coordinator/dashboard', function () {
-        return view('coordinator.dashboard');
-    })->name('coordinator.dashboard');
-});
-Route::middleware(['auth'])->group(function () {
-    Route::get('/coordinator/kategori-pelatihan', function () {
-        return view('coordinator.kategori-pelatihan');
-    })->name('kategori-pelatihan');
+    Route::get('/coordinator/dashboard', [BatchController::class, 'dashboard'])
+        ->name('coordinator.dashboard');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/coordinator/batch-management', function () {
-        return view('coordinator.batch-management');
-    })->name('batch-management');
+    Route::get('/coordinator/kategori-pelatihan', [CategoryController::class, 'index'])
+        ->name('kategori-pelatihan');
+
+    Route::post('/coordinator/kategori-pelatihan', [CategoryController::class, 'store'])
+        ->name('kategori-pelatihan.store');
+
+    Route::put('/coordinator/kategori-pelatihan/{category}', [CategoryController::class, 'update'])
+        ->name('kategori-pelatihan.update');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/coordinator/batch-management', [BatchController::class, 'index'])
+        ->name('batch-management');
+
+    Route::post('/coordinator/batch-management', [BatchController::class, 'store'])
+        ->name('batch-management.store');
+
+    Route::put('/coordinator/batch-management/{batch}', [BatchController::class, 'update'])
+        ->name('batch-management.update');
+
+    Route::delete('/coordinator/batch-management/{batch}', [BatchController::class, 'destroy'])
+        ->name('batch-management.destroy');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -110,15 +129,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/coordinator/monitoring-absensi', function () {
-        return view('coordinator.monitoring-absensi');
-    })->name('monitoring-absensi');
+    Route::get('/coordinator/monitoring-absensi', [BatchController::class, 'monitoringAbsensi'])
+        ->name('monitoring-absensi');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/coordinator/laporan', function () {
-        return view('coordinator.laporan');
-    })->name('laporan');
+    Route::get('/coordinator/laporan', [BatchController::class, 'laporan'])
+        ->name('laporan');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -130,33 +147,51 @@ Route::middleware(['auth'])->group(function () {
 
 // <!---------------- Trainer Routes ----------------> 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/trainer/dashboard', function () {
-        return view('trainer.dashboard');
-    })->name('trainer.dashboard');
+    Route::get('/trainer/dashboard', [MaterialController::class, 'trainerDashboard'])
+        ->name('trainer.dashboard');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/trainer/batches', function () {
-        return view('trainer.batches');
-    })->name('batches');
+    Route::get('/trainer/batches', [MaterialController::class, 'trainerBatches'])
+        ->name('batches');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/trainer/approval-kehadiran', function () {
-        return view('trainer.approval-kehadiran');
-    })->name('approval-kehadiran');
+    Route::get('/trainer/approval-kehadiran', [MaterialController::class, 'trainerApprovalKehadiran'])
+        ->name('approval-kehadiran');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/trainer/penilaian-tugas', function () {
-        return view('trainer.penilaian-tugas');
-    })->name('penilaian-tugas');
+    Route::get('/trainer/penilaian-tugas', [MaterialController::class, 'trainerPenilaianTugas'])
+        ->name('penilaian-tugas');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/trainer/upload-materi', function () {
-        return view('trainer.upload-materi');
-    })->name('upload-materi');
+    Route::get('/trainer/upload-materi', [MaterialController::class, 'index'])
+        ->name('upload-materi');
+
+    Route::post('/trainer/upload-materi', [MaterialController::class, 'store'])
+        ->name('upload-materi.store');
+
+    Route::put('/trainer/upload-materi/{material}', [MaterialController::class, 'update'])
+        ->name('upload-materi.update');
+
+    Route::delete('/trainer/upload-materi/{material}', [MaterialController::class, 'destroy'])
+        ->name('upload-materi.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/trainer/upload-tugas', [TaskController::class, 'index'])
+        ->name('upload-tugas');
+
+    Route::post('/trainer/upload-tugas', [TaskController::class, 'store'])
+        ->name('upload-tugas.store');
+
+    Route::put('/trainer/upload-tugas/{task}', [TaskController::class, 'update'])
+        ->name('upload-tugas.update');
+
+    Route::delete('/trainer/upload-tugas/{task}', [TaskController::class, 'destroy'])
+        ->name('upload-tugas.destroy');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -180,9 +215,14 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/branch_pic/validasi-data', function () {
-        return view('branch_pic.validasi-data');
-    })->name('validasi-data');
+    Route::get('/branch_pic/validasi-data', [BranchPicController::class, 'index'])
+        ->name('validasi-data');
+
+    Route::patch('/branch_pic/validasi-data/{batchParticipant}/approve', [BranchPicController::class, 'approve'])
+        ->name('validasi-data.approve');
+
+    Route::patch('/branch_pic/validasi-data/{batchParticipant}/reject', [BranchPicController::class, 'reject'])
+        ->name('validasi-data.reject');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -200,21 +240,21 @@ Route::middleware(['auth'])->group(function () {
 
 // <!---------------- Participant Routes ---------------->
 Route::middleware(['auth'])->group(function () {
-    Route::get('/participant/dashboard', function () {
-        return view('participant.dashboard');
-    })->name('participant.dashboard');
+    Route::get('/participant/dashboard', [BatchParticipantController::class, 'dashboard'])
+        ->name('participant.dashboard');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/participant/pendaftaran', function () {
-        return view('participant.pendaftaran');
-    })->name('pendaftaran');
+    Route::get('/participant/pendaftaran', [BatchParticipantController::class, 'index'])
+        ->name('pendaftaran');
+    
+    Route::post('/participant/pendaftaran/{batch}', [BatchParticipantController::class, 'store'])
+        ->name('participant.daftar');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/participant/pelatihan', function () {
-        return view('participant.pelatihan');
-    })->name('pelatihan');
+    Route::get('/participant/pelatihan', [BatchParticipantController::class, 'pelatihan'])
+        ->name('pelatihan');
 });
 
 Route::middleware(['auth'])->group(function () {

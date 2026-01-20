@@ -36,14 +36,13 @@
             'color'=>'text-[#FF4D00]'
         ])
         @include('dashboard.card', [
-            'title'=>'Sertifikat',
+            'title'=>'Failed',
             'value'=>0,
             'icon'=>'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-                class="icon icon-tabler icons-tabler-outline icon-tabler-award mb-8"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" /><path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
-                <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" /></svg>',
-            'color'=>'text-[#D4AF37]'
+                class="icon icon-tabler icons-tabler-x-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <circle cx="12" cy="12" r="9" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>',
+            'color'=>'text-[#ff0000]'
         ])
     </div>
 
@@ -62,7 +61,7 @@
             <input type="text"
                 name="search"
                 class="w-full border-0 focus:ring-0 text-sm bg-[#F1F1F1] placeholder-[#737373]"
-                placeholder="Cari nama, email, NIP, atau batch..." />
+                placeholder="Cari nama atau batch..." />
         </div>
 
         <!-- Dropdown Status -->
@@ -94,11 +93,9 @@
                 <template
                     x-for="item in [
                         { value: '', label: 'Semua Status' },
-                        { value: 'completed', label: 'Completed' },
                         { value: 'ongoing', label: 'Ongoing' },
-                        { value: 'approved', label: 'Approved' },
-                        { value: 'registered', label: 'Registered' },
-                        { value: 'rejected', label: 'Rejected' }
+                        { value: 'completed', label: 'Completed' },
+                        { value: 'failed', label: 'Failed' }
                     ]"
                     :key="item.value">
 
@@ -136,7 +133,6 @@
                     <thead class="border-b">
                         <tr class="text-left text-sm font-semibold text-gray-700">
                             <th class="px-4 py-3">Nama</th>
-                            <th class="px-4 py-3">NIP</th>
                             <th class="px-4 py-3">Email</th>
                             <th class="px-4 py-3">Batch</th>
                             <th class="px-4 py-3">Tanggal Daftar</th>
@@ -148,9 +144,6 @@
                         <tr class="hover:bg-gray-50 transition text-left">
                             <td class="px-4 py-3 text-left">
                                 Guru Peserta
-                            </td>
-                            <td class="px-4 py-3">
-                                198501012010011001
                             </td>
                             <td class="px-4 py-3">
                                 gurupeserta@gmail.com
@@ -180,9 +173,6 @@
                                 Rina Wati
                             </td>
                             <td class="px-4 py-3">
-                                199002152012012002
-                            </td>
-                            <td class="px-4 py-3">
                                 rinawati@gmail.com
                             </td>
                             <td class="px-4 py-3">
@@ -208,9 +198,6 @@
                         <tr class="hover:bg-gray-50 transition text-left">
                             <td class="px-4 py-3 text-left">
                                 Budi Hartono
-                            </td>
-                            <td class="px-4 py-3">
-                                198708202011011003
                             </td>
                             <td class="px-4 py-3">
                                 budihartono@gmail.com
@@ -242,9 +229,6 @@
                                 Dewi Lestari
                             </td>
                             <td class="px-4 py-3">
-                                199106152013012005
-                            </td>
-                            <td class="px-4 py-3">
                                 dewilestari@gmail.com
                             </td>
                             <td class="px-4 py-3">
@@ -272,7 +256,7 @@
                     </tbody>
                 </table>
 
-                <!-- Modal Deyail -->
+                <!-- Modal Detail -->
                 <div x-show="detailPeserta" x-cloak x-transition id="detailBatch" class="fixed inset-0 bg-black/40 z-50 items-center flex justify-center">
                     <div @click.outside="detailPeserta = false" class="bg-white max-w-xl rounded-2xl shadow-lg p-8 relative">
 
@@ -298,16 +282,12 @@
                                 <p>Guru Peserta</p>
                             </div>
                             <div>
-                                <p class="text-gray-700 text-md font-medium">NIP</p>
-                                <p>198501012010011001</p>
+                                <p class="text-gray-700 text-md font-medium">Cabang</p>
+                                <p>Jakarta Pusat</p>
                             </div>
                             <div>
                                 <p class="text-gray-700 text-md font-medium">Email</p>
                                 <p>gurupeserta@gmail.com</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 text-md font-medium">Cabang</p>
-                                <p>Jakarta Pusat</p>
                             </div>
                             <div class="col-span-2">
                                 <p class="text-gray-700 text-md font-medium">Batch Pelatihan</p>
@@ -332,7 +312,7 @@
                                 </span>
                             </div>
                             <div class="col-span-2">
-                                <p class="text-gray-700 text-md font-medium">Status</p>
+                                <p class="text-gray-700 text-md font-medium">Status Kehadiran</p>
                                 <span class="inline-block px-2 py-1 uppercase text-xs font-medium rounded-full bg-orange-100 text-[#FF4D00]">
                                     Check-In
                                 </span>

@@ -114,8 +114,8 @@
                 <h1 class="text-xl font-bold text-black">
                     {{ Auth::user()->name }}
                 </h1>
-                <p class="text-sm text-[#E1EFE2] leading-tight">
-                    Trainer
+                <p class="text-sm text-[#E1EFE2] leading-tight font-medium">
+                    {{ Auth::user()->role->description }}
                 </p>
             </div>
         </div>
@@ -126,8 +126,8 @@
         <nav class="mt-4 space-y-3">
 
             <!-- ITEM 1 -->
-            <a href="{{ route('trainer.dashboard') }}" class="flex items-center space-x-3 p-3 rounded-lg text-black font-medium
-                {{ request()->routeIs('trainer.dashboard') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('trainer.dashboard') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('trainer.dashboard') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
@@ -141,8 +141,8 @@
             </a>
 
             <!-- ITEM 2 -->
-            <a href="{{ route('batches') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('batches') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('batches') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('batches') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                 </svg>
@@ -150,8 +150,8 @@
             </a>
 
             <!-- ITEM 3 -->
-            <a href="{{ route('approval-kehadiran') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('approval-kehadiran') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('approval-kehadiran') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('approval-kehadiran') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-user-check">
@@ -164,8 +164,8 @@
             </a>
 
             <!-- ITEM 4 -->
-            <a href="{{ route('penilaian-tugas') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('penilaian-tugas') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('penilaian-tugas') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('penilaian-tugas') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-file-check">
@@ -178,8 +178,8 @@
             </a>
 
             <!-- ITEM 5 -->
-            <a href="{{ route('upload-materi') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('upload-materi') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('upload-materi') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('upload-materi') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-upload">
@@ -192,8 +192,22 @@
             </a>
 
             <!-- ITEM 6 -->
-            <a href="{{ route('settings-trainer') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('settings-trainer') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('upload-tugas') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('upload-tugas') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-file-upload">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                    <path d="M12 11v6" /><path d="M9.5 13.5l2.5 -2.5l2.5 2.5" />
+                </svg>
+                <span>Upload Tugas</span>
+            </a>
+
+            <!-- ITEM 7 -->
+            <a href="{{ route('settings-trainer') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('settings-trainer') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-settings">

@@ -114,8 +114,8 @@
                 <h1 class="text-xl font-bold text-black">
                     {{ Auth::user()->name }}
                 </h1>
-                <p class="text-sm text-[#E1EFE2] leading-tight">
-                    Branch PIC
+                <p class="text-sm text-[#E1EFE2] leading-tight font-medium">
+                    {{ Auth::user()->role->description }}
                 </p>
             </div>
         </div>
@@ -126,8 +126,8 @@
         <nav class="mt-4 space-y-3">
 
             <!-- ITEM 1 -->
-            <a href="{{ route('branch_pic.dashboard') }}" class="flex items-center space-x-3 p-3 rounded-lg text-black font-medium
-                {{ request()->routeIs('branch_pic.dashboard') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('branch_pic.dashboard') }}" class="flex items-center space-x-3 p-3 rounded-lg
+                {{ request()->routeIs('branch_pic.dashboard') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
@@ -141,8 +141,8 @@
             </a>
 
             <!-- ITEM 2 -->
-            <a href="{{ route('peserta-cabang') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('peserta-cabang') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('peserta-cabang') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('peserta-cabang') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-users">
@@ -156,8 +156,8 @@
             </a>
 
             <!-- ITEM 3 -->
-            <a href="{{ route('validasi-data') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('validasi-data') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('validasi-data') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('validasi-data') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-check">
@@ -170,8 +170,8 @@
             </a>
 
             <!-- ITEM 4 -->
-            <a href="{{ route('laporan-cabang') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('laporan-cabang') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('laporan-cabang') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('laporan-cabang') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text">
@@ -185,8 +185,8 @@
             </a>
 
             <!-- ITEM 5 -->
-            <a href="{{ route('settings-branch-pic') }}" class="flex items-center space-x-3 p-3 text-black  rounded-lg 
-                {{ request()->routeIs('settings-branch-pic') ? 'bg-[#E1EFE2]' : 'hover:bg-[#0e8e0f]' }}">
+            <a href="{{ route('settings-branch-pic') }}" class="flex items-center space-x-3 p-3 rounded-lg 
+                {{ request()->routeIs('settings-branch-pic') ? 'bg-[#E1EFE2] text-black font-bold' : 'font-medium text-[#E1EFE2] hover:bg-[#0e8e0f]' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                     class="icon icon-tabler icons-tabler-outline icon-tabler-settings">

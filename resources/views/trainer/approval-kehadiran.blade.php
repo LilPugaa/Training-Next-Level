@@ -72,36 +72,46 @@
                 x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-95"
-                class="absolute z-20 mt-2 w-full bg-white border rounded-lg shadow-md overflow-hidden">
+                class="absolute z-20 mt-2 w-full bg-white border rounded-lg shadow-md overflow-hidden max-h-52 overflow-y-auto">
 
-                <!-- Item -->
-                <template
-                    x-for="item in [
-                        { value: '', label: 'Semua Batch' },
-                        { value: 'pyGame', label: 'Python Game Developer Batch 1' },
-                        { value: 'pyCoder', label: 'Python Coder Batch 3' },
-                        { value: 'webDev', label: 'Web Development Fundamentals' }
-                    ]"
-                    :key="item.value">
-
-                    <div @click="value = item.value; label = item.label; open = false"
+                <div @click="
+                        value = ''; 
+                        label = 'Semua Batch';
+                        open = false
+                    "
+                    class="px-3 py-2 text-sm cursor-pointer flex justify-between items-center hover:bg-gray-100">
+                    <span>Semua Batch</span>
+                    <!-- Check Icon -->
+                    <svg x-show="value === ''" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 24 24" fill="none" stroke="#10AF13" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                    </svg>
+                </div>
+                @foreach ($batches as $batch)
+                    {{-- Data Batch --}}
+                    <div @click="
+                        value = '{{ $batch->id }}'; 
+                        label = '{{ $batch->title }}';
+                        open = false
+                    "
                         class="px-3 py-2 text-sm cursor-pointer flex justify-between items-center hover:bg-gray-100">
-
-                        <span x-text="item.label"></span>
-
+                        <span>{{ $batch->title }}</span>
                         <!-- Check Icon -->
-                        <svg x-show="value === item.value" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
-                            stroke="#10AF13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                        <svg x-show="value === '{{ $batch->id }}'" xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" viewBox="0 0 24 24" fill="none" stroke="#10AF13" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-check">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M5 12l5 5l10 -10" />
                         </svg>
                     </div>
-                </template>
+                @endforeach
             </div>
 
             <!-- Hidden input untuk backend -->
-            <input type="hidden" name="batch" :value="value">
+            <input type="hidden" name="batch_id" :value="value">
         </div>
 
         <!-- Dropdown Cabang -->

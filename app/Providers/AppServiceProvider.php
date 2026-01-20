@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Pest\Support\View;
 use App\Models\Role;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $view->with('roles', Role::all());
         });
+
+        Carbon::setLocale('eng');
     }
 }

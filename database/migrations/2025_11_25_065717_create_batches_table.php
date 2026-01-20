@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('batches', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('trainer_id')->constrained('users');
+            $table->text('description')->nullable();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('trainer_id')->constrained('users')->cascadeOnDelete();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->string('zoom_link')->nullable();

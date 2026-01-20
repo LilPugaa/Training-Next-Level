@@ -9,21 +9,21 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 px-2">
         @include('dashboard.card', [
             'title'=>'Batch',
-            'value'=>1,
+            'value'=>$batchCounts['totalBatches'] ?? 0,
             'icon'=>'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 // <path fill="none" stroke="#5EABD6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
             'color'=>'text-[#5EABD6]'
         ])
         @include('dashboard.card', [
             'title'=>'Ongoing',
-            'value'=>1,
+            'value'=>$batchCounts['ongoing'] ?? 0,
             'icon'=>'<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2" width="24" height="24" 
                 viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 3 a9 9 0 1 0 9 9" /></svg>',
             'color'=>'text-[#10AF13]'
         ])
         @include('dashboard.card', [
             'title'=>'Completed',
-            'value'=>0,
+            'value'=>$batchCounts['completed'] ?? 0,
             'icon'=>'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
                 class="icon icon-tabler icons-tabler-outline icon-tabler-progress-check"><path stroke="none" d="M0 0h24v24H0z" 
@@ -48,23 +48,34 @@
         <h2 class="text-lg font-semibold mb-5">
             Batch Saya
         </h2>
-        <div class="space-y-4">
-            <div class="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition">
-                <div>
-                    <h3 class="text-md font-semibold text-gray-800">
-                        Python Game Developer Batch 1
-                    </h3>
-                    <p class="text-md font-medium text-[#737373] flex flex-wrap gap-2">
-                        <span>10/11/2025</span>
-                        <span>•</span>
-                        <span>Kehadiran: Pending</span>
-                    </p>
-                </div>
+        <div class="space-y-4 max-h-[500px] overflow-y-auto pr-1">
+            @foreach ($batches as $batch)
+                <div class="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50 transition">
+                    <div>
+                        <h3 class="text-md font-semibold text-gray-800">
+                            {{ $batch->title }}
+                        </h3>
+                        <p class="text-md font-medium text-[#737373] flex flex-wrap gap-2">
+                            <span>
+                                {{ \Carbon\Carbon::parse($batch->start_date)->translatedFormat('d/m/Y') }}
+                            </span>
+                            <span>•</span>
+                            <span>Kehadiran: Pending</span>
+                        </p>
+                    </div>
 
-                <span class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-[#10AF13]">
-                    ONGOING
-                </span>
-            </div>
+                    @php
+                        $statusBatch = match ($batch->status) {
+                            'Scheduled' => 'bg-blue-100 text-[#0059FF]',
+                            'Ongoing' => 'bg-green-100 text-[#10AF13]',
+                            'Completed' => 'bg-orange-100 text-[#FF4D00]',
+                        };
+                    @endphp
+                    <span class="px-3 py-1 text-sm uppercase font-medium rounded-full {{ $statusBatch }}">
+                        {{ $batch->status }}
+                    </span>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection
